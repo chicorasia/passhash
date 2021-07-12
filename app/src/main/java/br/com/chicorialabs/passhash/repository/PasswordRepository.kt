@@ -1,7 +1,8 @@
 package br.com.chicorialabs.passhash.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import br.com.chicorialabs.passhash.data.Password
-import java.util.*
 
 class PasswordRepository {
 
@@ -12,13 +13,19 @@ class PasswordRepository {
         Password(3, "MockPassword4")
     )
 
+    private val mPasswords = ArrayList<Password>(listOfPasswordMock)
+    private val mPasswordLiveData = MutableLiveData<List<Password>>().apply {
+        value = mPasswords
+    }
 
-    fun getAllPasswords() = Collections.unmodifiableList(listOfPasswordMock)
+    val passwords: LiveData<List<Password>>
+        get() = mPasswordLiveData
 
     fun save(newPassword: String) {
-        listOfPasswordMock.add(
-            Password(listOfPasswordMock.size.toLong(), newPassword)
+        mPasswords.add(
+            Password(mPasswords.size.toLong(), newPassword)
         )
+        mPasswordLiveData.value = mPasswords
     }
 
     fun update(password: Password) {
@@ -29,5 +36,5 @@ class PasswordRepository {
     fun delete(password: Password) {
         listOfPasswordMock.remove(password)
     }
-
 }
+
