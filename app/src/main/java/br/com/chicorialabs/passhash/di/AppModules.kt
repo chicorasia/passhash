@@ -12,3 +12,5 @@ val viewModelModule = module {
 val repositoryModule = module {
     single { PasswordRepository() }
 }
+
+// TODO 007: Adicionar o daoModule

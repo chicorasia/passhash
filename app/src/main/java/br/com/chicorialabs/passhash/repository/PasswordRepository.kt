@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.com.chicorialabs.passhash.data.Password
 
+// TODO 004: Criar uma interface PassWordDao
+// TODO 005: Criar uma classe abstrata PasswordDatabase que extende a classe RoomDatabase
+// TODO 006: Refatorar o PasswordRepository para acessar PasswordDao
 class PasswordRepository {
 
     private val listOfPasswordMock = mutableListOf<Password>(

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PassHash</string>
+    <string name="item_plaintext_placeholder">MockPassword</string>
+    <string name="item_hash_placeholder">MD5: 408ee4e2bbcbbe50e204f3dd95ab11e7</string>
+    <string name="md5">MD5</string>
+    <string name="sha_256">SHA-256</string>
+    <string name="sha_1">SHA-1</string>
+    <string name="lista_senhas_placeholder">lista de senhas gravadas</string>
 </resources>

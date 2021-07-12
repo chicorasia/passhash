@@ -9,6 +9,7 @@ import org.koin.core.context.startKoin
 const val TAG = "PassHash"
 class AppApplication : Application() {
 
+//    TODO 008: Adicionar o daoModule
     override fun onCreate() {
         super.onCreate()
         startKoin {

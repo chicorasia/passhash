@@ -1,7 +1,7 @@
 package br.com.chicorialabs.passhash.data
 
 
-//TODO 002: Transformar essa classe em uma Entity
+//TODO 003: Transformar essa classe em uma Entity
 
 data class Password(
     val id: Long,
