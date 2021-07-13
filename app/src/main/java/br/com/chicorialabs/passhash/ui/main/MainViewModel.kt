@@ -2,8 +2,10 @@ package br.com.chicorialabs.passhash.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import br.com.chicorialabs.passhash.data.Password
 import br.com.chicorialabs.passhash.repository.PasswordRepository
+import kotlinx.coroutines.launch
 
 
 class MainViewModel(private val passwordRepository: PasswordRepository) : ViewModel() {
@@ -14,9 +16,10 @@ class MainViewModel(private val passwordRepository: PasswordRepository) : ViewMo
         get() = _passwordList
 
     fun save(newPassword: String) {
-        passwordRepository.save(newPassword)
+        viewModelScope.launch {
+            passwordRepository.save(newPassword)
+        }
     }
-
 
 }
 
