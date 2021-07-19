@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.chicorialabs.passhash.databinding.AddPasswordDialogBinding
 import br.com.chicorialabs.passhash.databinding.MainFragmentBinding
+import br.com.chicorialabs.passhash.extension.asString
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
@@ -30,13 +31,27 @@ class MainFragment : Fragment() {
         val root: View = binding.root
 
         initPasswordList()
+        initAlgorithmBtns()
 
         return root
     }
 
-    // TODO 005: Modificar o método initPasswordList para usar os dados da lista de PasswordDto
+    private fun initAlgorithmBtns() {
+        binding.md5btn.setOnClickListener {
+            mMainViewModel.setMd5()
+        }
+
+        binding.sha1btn.setOnClickListener {
+            mMainViewModel.setSha1()
+        }
+
+        binding.sha256btn.setOnClickListener {
+            mMainViewModel.setSha256()
+        }
+    }
+
     private fun initPasswordList() {
-        mMainViewModel.passwordList.observe(viewLifecycleOwner) {
+        mMainViewModel.passwordDtoList.observe(viewLifecycleOwner) {
             binding.passwordListTv.text = it.asString()
         }
 
