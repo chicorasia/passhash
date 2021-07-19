@@ -34,10 +34,13 @@ class MainFragment : Fragment() {
         return root
     }
 
+    // TODO 005: Modificar o método initPasswordList para usar os dados da lista de PasswordDto
     private fun initPasswordList() {
         mMainViewModel.passwordList.observe(viewLifecycleOwner) {
             binding.passwordListTv.text = it.asString()
         }
+
+    // TODO 008: Inicializar os buttons de algoritmo
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

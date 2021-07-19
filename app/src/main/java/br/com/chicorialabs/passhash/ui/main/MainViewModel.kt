@@ -7,6 +7,16 @@ import br.com.chicorialabs.passhash.data.Password
 import br.com.chicorialabs.passhash.repository.PasswordRepository
 import kotlinx.coroutines.launch
 
+// TODO 001: Criar uma data class PasswordDto (data transfer object)
+// TODO 002: Criar um atributo passwordsWithHash que aplica uma transformação aos objetos recebidos do Dao
+// TODO 003: Criar uma extension function Password.applyMD5()
+// TODO 004: Criar uma extension function para converter o List<PasswordDto> em uma string formatada
+// TODO 006: Criar um campo MutableLiveData<String> para manter o valor de hashAlgorithm
+// TODO 007: Criar métodos para setar o valor de _HashAlgorithm
+// TODO 009: Refatorar o método applyMd5() para receber uma string como parâmetro
+// TODO 010: Reescrever o passwordWithHash para aplicar um switchMap
+
+
 
 class MainViewModel(private val passwordRepository: PasswordRepository) : ViewModel() {
 
