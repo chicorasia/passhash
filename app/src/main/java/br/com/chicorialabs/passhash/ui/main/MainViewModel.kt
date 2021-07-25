@@ -6,7 +6,6 @@ import br.com.chicorialabs.passhash.extension.applyHash
 import br.com.chicorialabs.passhash.repository.PasswordRepository
 import kotlinx.coroutines.launch
 
-// TODO 010: Reescrever o passwordWithHash para aplicar um switchMap
 
 class MainViewModel(private val passwordRepository: PasswordRepository) : ViewModel() {
 

@@ -12,6 +12,17 @@ import br.com.chicorialabs.passhash.databinding.MainFragmentBinding
 import br.com.chicorialabs.passhash.extension.asString
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+// Parte 1
+// TODO 003: Criar um Adapter
+// TODO 004: Criar a classe para o ViewHolder
+// TODO 005: Inicializar o RecyclerView
+// TODO 006: Criar um LayoutManager
+// Parte 2: Melhores práticas
+// TODO 007: Criar um método from() para inflar o ViewHolder
+// TODO 008: Criar um método bind() dentro do ViewHolder
+// TODO 009: Criar uma regra de negócio para destacar as senhas curtas demais
+// TODO 010: Adicionar um onClickListener ao adapter
+
 class MainFragment : Fragment() {
 
     private val mMainViewModel: MainViewModel by viewModel()
@@ -55,7 +66,6 @@ class MainFragment : Fragment() {
             binding.passwordListTv.text = it.asString()
         }
 
-    // TODO 008: Inicializar os buttons de algoritmo
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

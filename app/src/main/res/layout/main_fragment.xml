@@ -57,6 +57,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+<!--    TODO 001: Adicionar um RecyclerView à tela do MainFragment -->
     <TextView
         android:id="@+id/passwordListTv"
         android:layout_width="wrap_content"
@@ -67,6 +68,7 @@
         style="?attr/textAppearanceBody1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline2"/>
+<!--    TODO 002: Criar um CardLayout para exibir um item da lista de PasswordDTO-->
 
 
 
