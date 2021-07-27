@@ -3,25 +3,16 @@ package br.com.chicorialabs.passhash.ui.main
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.chicorialabs.passhash.R
 import br.com.chicorialabs.passhash.databinding.AddPasswordDialogBinding
 import br.com.chicorialabs.passhash.databinding.MainFragmentBinding
-import br.com.chicorialabs.passhash.extension.asString
+import br.com.chicorialabs.passhash.ui.adapter.PasswordDtoAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
-// Parte 1
-// TODO 003: Criar um Adapter
-// TODO 004: Criar a classe para o ViewHolder
-// TODO 005: Inicializar o RecyclerView
-// TODO 006: Criar um LayoutManager
-// Parte 2: Melhores práticas
-// TODO 007: Criar um método from() para inflar o ViewHolder
-// TODO 008: Criar um método bind() dentro do ViewHolder
-// TODO 009: Criar uma regra de negócio para destacar as senhas curtas demais
-// TODO 010: Adicionar um onClickListener ao adapter
 
 class MainFragment : Fragment() {
 
@@ -62,10 +53,31 @@ class MainFragment : Fragment() {
     }
 
     private fun initPasswordList() {
-        mMainViewModel.passwordDtoList.observe(viewLifecycleOwner) {
-            binding.passwordListTv.text = it.asString()
+        mMainViewModel.passwordDtoList.observe(viewLifecycleOwner) { passwordDtoList ->
+            val adapter = PasswordDtoAdapter(passwordDtoList)
+            adapter.onClickListener = { passwordDto ->
+                createUpdadePasswordDialog(passwordDto)
+            }
+            binding.recyclerView.adapter = adapter
+            binding.recyclerView.layoutManager = LinearLayoutManager(context)
         }
 
+    }
+
+    private fun createUpdadePasswordDialog(passwordDto: MainViewModel.PasswordDto) {
+        val dialogBinding = AddPasswordDialogBinding.inflate(layoutInflater)
+        dialogBinding.addDialogEdt.setText(passwordDto.password)
+        AlertDialog.Builder(activity)
+            .setView(dialogBinding.root)
+            .setCancelable(true)
+            .setTitle(getString(R.string.edit_password_dialog))
+            .setNegativeButton(getString(R.string.cancel), null)
+            .setPositiveButton(getString(R.string.ok), DialogInterface.OnClickListener { _, _ ->
+                mMainViewModel.update(passwordDto.id,
+                    dialogBinding.addDialogEdt.text.toString())
+            })
+            .create()
+            .show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -86,9 +98,9 @@ class MainFragment : Fragment() {
         AlertDialog.Builder(activity)
             .setView(dialogBinding.root)
             .setCancelable(true)
-            .setTitle("Add new password")
-            .setNegativeButton("Cancel", null)
-            .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+            .setTitle(getString(R.string.add_new_password))
+            .setNegativeButton(getString(R.string.cancel), null)
+            .setPositiveButton(getString(R.string.ok), DialogInterface.OnClickListener { _, _ ->
                 mMainViewModel.save(dialogBinding.addDialogEdt.text.toString())
             })
             .create()

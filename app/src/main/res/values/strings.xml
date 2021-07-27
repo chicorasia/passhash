@@ -6,4 +6,10 @@
     <string name="sha_256">SHA-256</string>
     <string name="sha_1">SHA-1</string>
     <string name="lista_senhas_placeholder">lista de senhas gravadas</string>
+    <string name="password_placeholder">MockPassword</string>
+    <string name="hash_placeholder">7c0c6abcdabfd7fe2979c6add84bd41cd41b9de5ab963a8ee42740b1da5a672d</string>
+    <string name="edit_password_dialog">Edit password</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="add_new_password">Add new password</string>
 </resources>

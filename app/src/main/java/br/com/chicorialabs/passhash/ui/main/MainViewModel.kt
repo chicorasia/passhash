@@ -44,10 +44,15 @@ class MainViewModel(private val passwordRepository: PasswordRepository) : ViewMo
     }
 
 
-
     fun save(newPassword: String) {
         viewModelScope.launch {
             passwordRepository.save(newPassword)
+        }
+    }
+
+    fun update(id: Long, password: String) {
+        viewModelScope.launch {
+            passwordRepository.update(Password(id = id, password = password))
         }
     }
 
