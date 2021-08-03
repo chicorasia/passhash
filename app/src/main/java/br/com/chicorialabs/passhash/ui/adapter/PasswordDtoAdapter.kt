@@ -44,6 +44,7 @@ class PasswordDtoAdapter(
                 itemEditBtn.setOnClickListener {
                     onClickListener(item)
                 }
+                executePendingBindings()
             }
         }
 
