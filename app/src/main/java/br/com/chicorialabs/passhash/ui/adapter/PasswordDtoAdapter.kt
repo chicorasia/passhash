@@ -28,13 +28,8 @@ class PasswordDtoAdapter(
     class PasswordDtoViewHolder private constructor(private val binding: ItemPasswordDtoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-//        TODO 005: Eliminar as vinculações das TextViews
-//        TODO 006: Atribuir um valor ao atributo passwordDto do ViewHolder
-//        TODO 007: Criar um arquivo BindingUtils
 //        Tarefas do arquivo BindingUtils
-//        TODO 008: Criar um BindingAdapter para trocar o ícone
-//        TODO 009: Criar um BindingAdapter para o texto limpo
-//        TODO 010: Criar um BindingAdapter para o hash
+
 
 //        TODO 012: Refatoração
 
@@ -45,18 +40,7 @@ class PasswordDtoAdapter(
             onClickListener: (passwordDto: MainViewModel.PasswordDto) -> Unit
         ) {
             with(binding) {
-                itemPasswordTv.setTextColor(Color.BLACK)
-                itemPasswordTv.text = item.password
-                itemHashTv.text = item.hash
-                itemCheckIc.setImageResource(
-                    when (item.password.length) {
-                        in 1..7 -> R.drawable.ic_baseline_warning_amber_24
-                        else -> R.drawable.ic_baseline_check_24
-                    }
-                )
-                if (item.password.length <= 7) {
-                    itemPasswordTv.setTextColor(Color.RED)
-                }
+                passwordDto = item
                 itemEditBtn.setOnClickListener {
                     onClickListener(item)
                 }
