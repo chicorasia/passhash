@@ -31,6 +31,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+//    TODO 001: Verificar se a buildFeature dataBinding está habilitada
     buildFeatures {
         viewBinding true
         dataBinding true

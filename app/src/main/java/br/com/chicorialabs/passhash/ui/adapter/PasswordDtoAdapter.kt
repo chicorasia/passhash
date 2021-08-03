@@ -28,6 +28,18 @@ class PasswordDtoAdapter(
     class PasswordDtoViewHolder private constructor(private val binding: ItemPasswordDtoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+//        TODO 005: Eliminar as vinculações das TextViews
+//        TODO 006: Atribuir um valor ao atributo passwordDto do ViewHolder
+//        TODO 007: Criar um arquivo BindingUtils
+//        Tarefas do arquivo BindingUtils
+//        TODO 008: Criar um BindingAdapter para trocar o ícone
+//        TODO 009: Criar um BindingAdapter para o texto limpo
+//        TODO 010: Criar um BindingAdapter para o hash
+
+//        TODO 012: Refatoração
+
+
+
         fun bind(
             item: MainViewModel.PasswordDto,
             onClickListener: (passwordDto: MainViewModel.PasswordDto) -> Unit
