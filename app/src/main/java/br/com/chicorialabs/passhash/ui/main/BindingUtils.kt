@@ -1,6 +1,7 @@
 package br.com.chicorialabs.passhash.ui.main
 
 import android.graphics.Color
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -28,7 +29,6 @@ fun TextView.setPasswordWithColor(item: MainViewModel.PasswordDto?) {
             setTextColor(Color.RED)
         }
     }
-
 }
 
 @BindingAdapter("itemHashTv")

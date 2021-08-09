@@ -52,6 +52,7 @@ class MainFragment : Fragment() {
         }
     }
 
+//    TODO 009: Submeter a lista para o ListAdapter
     private fun initPasswordList() {
         mMainViewModel.passwordDtoList.observe(viewLifecycleOwner) { passwordDtoList ->
             val adapter = PasswordDtoAdapter(passwordDtoList)
@@ -82,8 +83,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         initFab()
     }
 
