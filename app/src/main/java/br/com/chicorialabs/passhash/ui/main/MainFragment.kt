@@ -52,10 +52,10 @@ class MainFragment : Fragment() {
         }
     }
 
-//    TODO 005: Submeter a lista para o ListAdapter
     private fun initPasswordList() {
         mMainViewModel.passwordDtoList.observe(viewLifecycleOwner) { passwordDtoList ->
-            val adapter = PasswordDtoAdapter(passwordDtoList)
+            val adapter = PasswordDtoAdapter()
+            adapter.submitList(passwordDtoList)
             adapter.onClickListener = { passwordDto ->
                 createUpdadePasswordDialog(passwordDto)
             }

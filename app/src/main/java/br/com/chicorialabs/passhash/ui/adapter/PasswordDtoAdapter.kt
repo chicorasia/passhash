@@ -11,23 +11,18 @@ import br.com.chicorialabs.passhash.R
 import br.com.chicorialabs.passhash.databinding.ItemPasswordDtoBinding
 import br.com.chicorialabs.passhash.ui.main.MainViewModel
 
-// TODO 001: Converter o Adapter em uma classe ListAdapter<T, VH>()
-// TODO 003: Eliminar o campo listPasswordDto
 class PasswordDtoAdapter(
-    private val listPasswordDto: List<MainViewModel.PasswordDto>,
     var onClickListener: (passwordDto: MainViewModel.PasswordDto) -> Unit = {}
-) : RecyclerView.Adapter<PasswordDtoAdapter.PasswordDtoViewHolder>() {
+) : ListAdapter<MainViewModel.PasswordDto,
+        PasswordDtoAdapter.PasswordDtoViewHolder>(PasswordDtoCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordDtoViewHolder =
         PasswordDtoViewHolder.from(parent)
 
     override fun onBindViewHolder(holder: PasswordDtoViewHolder, position: Int) {
-        val item = listPasswordDto[position]
+        val item = getItem(position)
         holder.bind(item, onClickListener)
     }
-
-//  TODO 004: Eliminar o método getItemCount()
-    override fun getItemCount(): Int = listPasswordDto.size
 
     class PasswordDtoViewHolder private constructor(private val binding: ItemPasswordDtoBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -58,7 +53,23 @@ class PasswordDtoAdapter(
 
     }
 
-//    TODO 002: Criar um PasswordDtoCallback()
+    class PasswordDtoCallback : DiffUtil.ItemCallback<MainViewModel.PasswordDto>() {
+        override fun areItemsTheSame(
+            oldItem: MainViewModel.PasswordDto,
+            newItem: MainViewModel.PasswordDto
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(
+            oldItem: MainViewModel.PasswordDto,
+            newItem: MainViewModel.PasswordDto
+        ): Boolean {
+            return oldItem.password == newItem.password && oldItem.hash == newItem.hash
+        }
+
+    }
+
 
 
 }
