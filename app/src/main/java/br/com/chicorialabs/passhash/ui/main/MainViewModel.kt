@@ -18,11 +18,6 @@ class MainViewModel(private val passwordRepository: PasswordRepository) : ViewMo
     val hashAlgorithm: String
         get() = _hashAlgorithm.value ?: "MD5"
 
-//    TODO 003: Comentar ou remover o bloco init { }
-    init {
-        addTestData()
-    }
-
     val passwordDtoList: LiveData<List<PasswordDto>> =
         Transformations.switchMap(_hashAlgorithm) {
             passwordList.map {
@@ -67,16 +62,5 @@ class MainViewModel(private val passwordRepository: PasswordRepository) : ViewMo
         val hash: String
     )
 
-//    TODO 001: Limpar o appdata e rodar para adicionar 200 senhas ao armazenamento
-//    TODO 002: Comentar ou remover o addTestData()
-    fun addTestData() {
-        viewModelScope.launch {
-            if (passwordList.value.isNullOrEmpty()) {
-                for (i in 1..200) {
-                    passwordRepository.save("MockPassword$i")
-                }
-            }
-        }
-    }
 }
 
